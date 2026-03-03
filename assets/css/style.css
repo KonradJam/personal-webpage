@@ -2,21 +2,19 @@
    1. Design tokens
 ========================= */
 :root {
-  /* Paleta kolorów z projektu */
+
   --bg-color: #F5F5F5;
   --fg-color: #1D3246;
   --fg-scnd-color: #E2E8F0;
   --accent-color: #0055FF;
 
-  /* Typografia */
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Pionowy rytm (Światło) */
-  --space-layout: 4rem;        /* 64px */
-  --space-layout-double: calc(var(--space-layout) * 2); /* 128px */
+  --space-layout: 4rem;
+  --space-layout-double: calc(var(--space-layout) * 2);
 
-  --line-base-height: 1.75;    /* Bazowa wysokość linii dla tekstu */
+  --line-base-height: 1.75;
 }
 
 /* =========================
@@ -29,7 +27,7 @@
 }
 
 html {
-  font-size: 100%; /* 1rem = 16px */
+  font-size: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -287,7 +285,7 @@ a {
 }
 
 /* =========================
-   11. Filters (Projekty)
+   11. Filters (Projects)
 ========================= */
 .filters {
   display: flex;
@@ -454,7 +452,6 @@ a {
     gap: var(--space-layout);
   }
 
-  /* Modyfikacje dla strony Projekty */
   .filters {
     flex-direction: row;
     justify-content: flex-start;
@@ -475,23 +472,12 @@ a {
    14. Contact (Mobile First)
 ========================= */
 
-/*
-  Główny kontener sekcji kontakt.
-  flex-direction: column + gap zamiast marginesów —
-  spójne z resztą projektu (about, skills itd.).
-*/
 .contact {
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 6vw, var(--space-layout));
 }
 
-/*
-  Adres e-mail jako wyróżniony link.
-  Celowo bold + wyśrodkowany + subtelny border-bottom
-  wzorem .cta__link — spójny język wizualny.
-  font-size z clamp: na mobile mniejszy, na desktop większy.
-*/
 .contact__email {
   display: block;
   text-align: center;
@@ -514,12 +500,6 @@ a {
    15. Form (Mobile First)
 ========================= */
 
-/*
-  Formularz jako flex column — każda .form__group
-  to osobny pionowy blok label + control.
-  gap zamiast margin na grupach: łatwiej zmienić
-  rytm z jednego miejsca.
-*/
 .form {
   display: flex;
   flex-direction: column;
@@ -532,10 +512,6 @@ a {
   gap: 0.5rem;
 }
 
-/*
-  Label mały, lekko stonowany — hierarchy wizualna:
-  label podrzędny, input dominuje.
-*/
 .form__label {
   font-size: 0.875rem;
   font-weight: 400;
@@ -543,14 +519,6 @@ a {
   opacity: 0.8;
 }
 
-/*
-  Wspólna baza dla input i textarea.
-  - appearance: none resetuje style przeglądarki (Safari)
-  - border oparty na --fg-scnd-color (subtelny, jak divider)
-  - background: transparent — blend z tłem strony
-  - font-family: inherit — bez fall-backu na serif w Safari
-  - transition na border-color dla płynnego focus
-*/
 .form__control {
   appearance: none;
   -webkit-appearance: none;
@@ -561,49 +529,26 @@ a {
   color: var(--fg-color);
   background-color: transparent;
   border: 2px solid var(--fg-color);
-  border-radius: 0;            /* flat — spójne z resztą UI (brak border-radius wszędzie) */
+  border-radius: 0;
   line-height: var(--line-base-height);
   transition: border-color 0.2s ease;
 }
 
-/*
-  focus bez :focus-visible — formularz zawsze
-  powinien dawać wyraźny feedback, niezależnie od metody wejścia.
-  Nadpisujemy globalny :focus-visible — tutaj chcemy
-  border zamiast outline, żeby nie nakładać dwóch efektów.
-*/
 .form__control:focus {
   outline: none;
   border-color: var(--accent-color);
 }
 
-/*
-  Modifier dla textarea:
-  - min-height z clamp: 180px mobile → 220px desktop
-  - resize: vertical — użytkownik może powiększyć
-    w pionie, ale nie deformować layout poziomego
-*/
 .form__control--textarea {
   min-height: clamp(11.25rem, 30vw, 13.75rem);
   resize: vertical;
 }
 
-/*
-  Kontener przycisku — justify flex-end przesuwa
-  przycisk do prawej (jak na screenshocie).
-  Bez tego musiałbyś robić margin-left: auto na samym buttonie.
-*/
 .form__actions {
   display: flex;
   justify-content: flex-end;
 }
 
-/*
-  Przycisk wzorowany na .filters__btn:
-  transparent bg, border, kolor fg — ghost button.
-  Celowo font-sans (nie mono) — to CTA, nie kod.
-  cursor: pointer — zawsze na interaktywnych elementach.
-*/
 .form__btn {
   appearance: none;
   -webkit-appearance: none;

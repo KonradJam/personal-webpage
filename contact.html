@@ -20,40 +20,21 @@
   <body>
     <div class="container">
 
-      <!-- =====================
-           NAV
-           Reused: .nav, .nav__link, .nav__link--active
-           ===================== -->
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="index.html" class="nav__link">O mnie</a>
         <a href="projects.html" class="nav__link">Projekty</a>
         <a href="contact.html" class="nav__link nav__link--active" aria-current="page">Kontakt</a>
       </nav>
 
-      <!-- =====================
-           HEADER
-           Reused: .header, .header__title
-           ===================== -->
       <header class="header">
         <h1 class="header__title">Kontakt</h1>
       </header>
 
-      <!-- =====================
-           DIVIDER
-           Reused: .divider
-           ===================== -->
       <hr class="divider" />
 
-      <!-- =====================
-           MAIN — CONTACT SECTION
-           New: .contact, .contact__email
-           Reused: .manifesto, .manifesto__paragraph
-           ===================== -->
       <main>
         <section class="contact" aria-labelledby="contact-heading">
 
-          <!-- Intro — reuse .manifesto/.manifesto__paragraph,
-               bo ten sam styl: wyśrodkowany, lekki, większy font -->
           <div class="manifesto">
             <p class="manifesto__paragraph">
               Porozmawiajmy o automatyzacji Twoich procesów lub nowym projekcie
@@ -61,18 +42,10 @@
             </p>
           </div>
 
-          <!-- Bezpośredni e-mail jako klikalny link
-               New: .contact__email -->
           <a id="contact-email-link" class="contact__email" title="Kliknij, aby wysłać e-mail">
   Pokaż adres e-mail
           </a>
 
-          <!-- =====================
-               FORM
-               New: .form, .form__group, .form__label,
-                    .form__control, .form__control--textarea,
-                    .form__actions, .form__btn
-               ===================== -->
           <form
             class="form"
             action="#"
@@ -124,10 +97,6 @@
         </section>
       </main>
 
-      <!-- =====================
-           FOOTER
-           Reused: .footer, .footer__links, .footer__link, .footer__copyrights
-           ===================== -->
       <footer class="footer">
         <div class="footer__links">
           <a
@@ -146,7 +115,7 @@
         <p class="footer__copyrights">&copy; 2026 Konrad Jam</p>
       </footer>
 
-    </div><!-- /.container -->
+    </div>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
