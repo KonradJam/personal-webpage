@@ -60,7 +60,6 @@ a {
 .container {
     width: 100%;
     margin: 0 auto;
-    /* Światło na górze i dole strony w bazowym wydaniu */
     padding: var(--space-layout) 1.25rem; 
 }
 
@@ -70,10 +69,8 @@ a {
 .nav {
     display: flex;
     justify-content: center;
-    gap: clamp(3rem, 15vw, 4rem); /* Elastyczne odstępy między linkami, ale z minimum 32px i maksimum 60px */
-    /* 60px od nawigacji do nagłówka */
+    gap: clamp(3rem, 15vw, 4rem); 
     margin-bottom: var(--space-layout); 
-    
 }
 
 .nav__link {
@@ -101,9 +98,6 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    /* 60px między głównym blokiem tytułu a lokalizacją/podtytułem (jeśli uznasz to za element strukturalny)
-       lub mniejszy na same teksty blisko siebie. Zastosujmy tu relację 30px w samym headerze dla spójności czytania
-       głównego nagłówka, a 60px do linii. */
     gap: 1.875rem; 
 }
 
@@ -149,7 +143,6 @@ a {
     background-color: var(--fg-scnd-color);
     width: 100%;
     max-width: 18rem;
-    /* Idealne 60px nad i pod każdą linią */
     margin: var(--space-layout) auto; 
 }
 
@@ -159,7 +152,6 @@ a {
 .about {
     display: flex;
     flex-direction: column;
-    /* Dokładnie 60px między akapitami zgodnie z życzeniem */
     gap: var(--space-layout); 
 }
 
@@ -170,8 +162,6 @@ a {
 }
 
 .manifesto {
-    /* Utrzymujemy naturalny flow, więc margin-top nam niepotrzebny ze względu na `gap` w .about. 
-       Dodajemy margin dolny lub zostawiamy puste dla zachowania równych odstępów. */
     margin: 0;
     padding: 0;
     text-align: center;
@@ -190,7 +180,6 @@ a {
 .skills {
     display: flex;
     flex-direction: column;
-    /* 60px między całymi sekcjami umiejętności (DTP, Automatyzacja, etc.) */
     gap: var(--space-layout); 
 }
 
@@ -205,8 +194,6 @@ a {
 .skill {
     display: flex;
     flex-direction: column;
-    /* 30px wewnątrz konkretnej umiejętności pomiędzy jej tytułem a listą narzędzi, 
-       aby te nadal wydawały się powiązane jako jeden byt */
     gap: 1rem; 
 }
 
@@ -222,7 +209,7 @@ a {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Mniejsze odstępy dla list narzędziowych wewnątrz bloku */
+    gap: 1rem; 
 }
 
 .skill__item {
@@ -247,7 +234,6 @@ a {
     display: flex;
     flex-direction: column; 
     align-items: center;
-    /* 60px przestrzeni w pionie na mobile miedzy dwoma przyciskami CTA */
     gap: var(--space-layout); 
     text-align: center;
 }
@@ -272,9 +258,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 60px przestrzeni pomiędzy linkami a rokiem/coprights */
     gap: 1.5rem; 
-    /* 120px przestrzeni ponad footerem, czyli od elementu .cta! Zgodnie z wytycznymi. */
     margin-top: var(--space-layout-double);
 }
 
@@ -302,12 +286,150 @@ a {
 }
 
 /* =========================
-   11. Desktop Enhancements
+   11. Filters (Projekty)
+========================= */
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; 
+    margin-bottom: var(--space-layout);
+}
+
+.filters__label {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.filters__group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+    width: 100%;
+}
+
+.filters__btn {
+    background-color: transparent;
+    border: 0.125rem solid var(--fg-color);
+    color: var(--fg-color);
+    font-family: var(--font-mono); 
+    font-size: clamp(0.875rem, 2.5vw, 1rem); 
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filters__btn--active,
+.filters__btn:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* =========================
+   12. Projects List
+========================= */
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-layout); 
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project__title {
+    margin: 0;
+    width: fit-content;
+}
+
+.project__link {
+    color: var(--fg-color);
+    font-weight: 800;
+    font-size: clamp(1.375rem, 4vw, 1.75rem); 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; 
+    padding-bottom: 0.25rem;
+    border-bottom: 0.125rem solid var(--fg-scnd-color);
+    transition: all  0.2s ease;
+}
+
+.project__link:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.project__link::after {
+    content: "↗"; 
+    font-family: var(--font-sans);
+    font-size: 1em; /* Przywracamy pełny rozmiar względem tekstu */
+    font-weight: 800; /* Zrównujemy "grubość" ze światłem nagłówka (było 400) */
+    margin-left: 0.15rem; /* Dajemy znakom trochę oddechu */
+    transition: transform 0.2s ease;
+}
+
+.project__link:hover::after {
+    transform: translate(0.15rem, -0.15rem); 
+}
+
+.project__tech-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 0.5rem;
+}
+
+.project__tech-item {
+    font-family: var(--font-mono);
+    font-size: 1rem; 
+    display: flex;
+    align-items: center;
+}
+
+.project__tech-item:not(:last-child)::after {
+    content: "■";
+    font-size: 0.4rem;
+    color: var(--fg-scnd-color);
+    margin: 0 0.75rem;
+}
+
+.project__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project__detail {
+    margin: 0;
+    font-size: clamp(0.9375rem, 2vw, 1rem); 
+    line-height: var(--line-base-height);
+}
+
+.project__label {
+    font-weight: 800;
+}
+
+/* =========================
+   13. Desktop Enhancements
 ========================= */
 @media (min-width: 48rem) {
     .container {
-        max-width: 45rem; 
-        /* Ogólne światło dookoła kontenera na dużych ekranach */
+        max-width: 48rem; 
         padding: calc(var(--space-layout) * 1.5) 1.5rem; 
     }
 
@@ -316,21 +438,34 @@ a {
     }
 
     .cta {
-        /* Elementy CTA na desktopie lądują w rzędzie z równo 60px przerwy między sobą */
         flex-direction: row;
         justify-content: center;
         gap: var(--space-layout);
     }
 
     .footer {
-        /* Na desktopie chcemy, aby linki były w jednej linii, a odstęp między nimi wynosił 60px */
         flex-direction: row;
         justify-content: center;
         gap: var(--space-layout-double);
     }
 
     .footer__links {
-        /* Odstęp w poziomie na poziomie 60px dla linków społecznościowych */
         gap: var(--space-layout);
+    }
+
+    /* Modyfikacje dla strony Projekty */
+    .filters {
+        flex-direction: row; 
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .filters__label {
+        margin-bottom: 0;
+    }
+
+    .filters__group {
+        justify-content: flex-start; 
     }
 }

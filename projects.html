@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Projekty - Konrad Jam</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Nawigacja -->
+        <nav class="nav">
+            <a href="index.html" class="nav__link">O mnie</a>
+            <a href="projekty.html" class="nav__link nav__link--active" aria-current="page">Projekty</a>
+            <a href="contact.html" class="nav__link">Kontakt</a>
+        </nav>
+
+        <!-- Nagłówek strony -->
+        <header class="header">
+            <div class="header__wrap">
+                <h1 class="header__title">Projekty</h1>
+            </div>
+        </header>
+
+        <hr class="divider">
+
+        <main class="main">
+            <!-- Sekcja filtrów -->
+            <section class="filters" aria-labelledby="filters-title">
+                <h2 id="filters-title" class="filters__label">Filtrowanie:</h2>
+                <div class="filters__group">
+                    <button type="button" class="filters__btn" aria-pressed="false">AI</button>
+                    <button type="button" class="filters__btn filters__btn--active" aria-pressed="true">Automatyzacja</button>
+                    <button type="button" class="filters__btn filters__btn--active" aria-pressed="true">DTP / Grafika</button>
+                    <button type="button" class="filters__btn" aria-pressed="false">Web / IoT</button>
+                </div>
+            </section>
+
+            <!-- Lista projektów -->
+            <div class="projects">
+                
+                <!-- Projekt 1 -->
+                <article class="project">
+                    <header class="project__header">
+                        <h2 class="project__title">
+                            <a href="https://github.com/TwojProfil/impozycjoner-broszur" target="_blank" rel="noopener noreferrer" class="project__link">
+                                Impozycjoner broszur
+                            </a>
+                        </h2>
+                        <ul class="project__tech-list" aria-label="Technologie użyte w projekcie">
+                            <li class="project__tech-item">Adobe ExtendScript</li>
+                        </ul>
+                    </header>
+                    <div class="project__content">
+                        <p class="project__detail">
+                            <strong class="project__label">Problem:</strong> Ręczna impozycja broszury lub instrukcji jest bardzo czasochłonna.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Rozwiązanie:</strong> Skrypt oblicza ilość użytków na arkuszu i wykonuje automatycznie impozycję.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Wpływ:</strong> Skrócenie czasu impozycji z około 20 min do 10 sekund.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Projekt 2 -->
+                <article class="project">
+                    <header class="project__header">
+                        <h2 class="project__title">
+                            <a href="https://github.com/TwojProfil/impozycjoner-akcydensow" target="_blank" rel="noopener noreferrer" class="project__link">
+                                Impozycjoner akcydensów
+                            </a>
+                        </h2>
+                        <ul class="project__tech-list" aria-label="Technologie użyte w projekcie">
+                            <li class="project__tech-item">Adobe ExtendScript</li>
+                        </ul>
+                    </header>
+                    <div class="project__content">
+                        <p class="project__detail">
+                            <strong class="project__label">Problem:</strong> Ręczna impozycja akcydensów (np. ulotki, wizytówki) jest czasochłonna.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Rozwiązanie:</strong> Skrypt oblicza ilość użytków na arkuszu i wykonuje automatycznie impozycję.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Wpływ:</strong> Skrócenie czasu impozycji z około 10 min do 10 sekund.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Projekt 3 -->
+                <article class="project">
+                    <header class="project__header">
+                        <h2 class="project__title">
+                            <a href="https://github.com/TwojProfil/generator-spadow" target="_blank" rel="noopener noreferrer" class="project__link">
+                                Generator spadów
+                            </a>
+                        </h2>
+                        <ul class="project__tech-list" aria-label="Technologie użyte w projekcie">
+                            <li class="project__tech-item">Adobe ExtendScript</li>
+                        </ul>
+                    </header>
+                    <div class="project__content">
+                        <p class="project__detail">
+                            <strong class="project__label">Problem:</strong> Duża ilość plików bez spadów.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Rozwiązanie:</strong> Skrypt tworzy spady przez kopiowanie krawędzi dokumentu i jego przeskalowanie.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Wpływ:</strong> Nie trzeba odsyłać pliku do klienta do poprawy, ani ręcznie dorabiać spadów.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Projekt 4 -->
+                <article class="project">
+                    <header class="project__header">
+                        <h2 class="project__title">
+                            <a href="https://github.com/TwojProfil/prognoza-pogody" target="_blank" rel="noopener noreferrer" class="project__link">
+                                Prognoza pogody
+                            </a>
+                        </h2>
+                        <ul class="project__tech-list" aria-label="Technologie użyte w projekcie">
+                            <li class="project__tech-item">n8n</li>
+                            <li class="project__tech-item">JavaScript</li>
+                            <li class="project__tech-item">API</li>
+                            <li class="project__tech-item">HTML</li>
+                            <li class="project__tech-item">AI</li>
+                        </ul>
+                    </header>
+                    <div class="project__content">
+                        <p class="project__detail">
+                            <strong class="project__label">Problem:</strong> Niewygodne sprawdzanie prognozy pogody w serwisach pogodowych.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Rozwiązanie:</strong> Automatyzacja przesyłająca prognozę na maila, z podsumowaniem głosowym, o określonych godzinach.
+                        </p>
+                        <p class="project__detail">
+                            <strong class="project__label">Wpływ:</strong> Skrócenie czasu potrzebnego na sprawdzenie pogody.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__links">
+                <a href="#" class="footer__link">GitHub</a>
+                <a href="#" class="footer__link">LinkedIn</a>
+            </div>
+            <small class="footer__copyrights">
+                &copy; 2026 Konrad Jam
+            </small>
+        </footer>
+    </div>
+</body>
+</html>
