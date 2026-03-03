@@ -2,21 +2,21 @@
    1. Design tokens
 ========================= */
 :root {
-    /* Paleta kolorów z projektu */
-    --bg-color: #F5F5F5;
-    --fg-color: #1D3246;
-    --fg-scnd-color: #E2E8F0;
-    --accent-color: #0055FF;
+  /* Paleta kolorów z projektu */
+  --bg-color: #F5F5F5;
+  --fg-color: #1D3246;
+  --fg-scnd-color: #E2E8F0;
+  --accent-color: #0055FF;
 
-    /* Typografia */
-    --font-sans: "Inter", system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
+  /* Typografia */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-    /* Pionowy rytm (Światło) */
-    --space-layout: 4rem; /* 64px */
-    --space-layout-double: calc(var(--space-layout) * 2); /* 120px */
+  /* Pionowy rytm (Światło) */
+  --space-layout: 4rem;        /* 64px */
+  --space-layout-double: calc(var(--space-layout) * 2); /* 128px */
 
-    --line-base-height: 1.75; /* Bazowa wysokość linii dla tekstu */
+  --line-base-height: 1.75;    /* Bazowa wysokość linii dla tekstu */
 }
 
 /* =========================
@@ -25,447 +25,605 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 100%; /* 1rem = 16px */
-    -webkit-text-size-adjust: 100%;
+  font-size: 100%; /* 1rem = 16px */
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: var(--font-sans);
-    color: var(--fg-color);
-    background-color: var(--bg-color);
-    line-height: var(--line-base-height);
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+  line-height: var(--line-base-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 :focus-visible {
-    outline: 0.1875rem solid var(--accent-color);
-    outline-offset: 0.25rem;
-    border-radius: 0.25rem;
+  outline: 0.1875rem solid var(--accent-color);
+  outline-offset: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 /* =========================
    3. Layout container (Mobile First)
 ========================= */
 .container {
-    width: 100%;
-    margin: 0 auto;
-    padding: var(--space-layout) 1.25rem; 
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-layout) 1.25rem;
 }
 
 /* =========================
    4. Nav
 ========================= */
 .nav {
-    display: flex;
-    justify-content: center;
-    gap: clamp(3rem, 15vw, 4rem); 
-    margin-bottom: var(--space-layout); 
+  display: flex;
+  justify-content: center;
+  gap: clamp(3rem, 15vw, 4rem);
+  margin-bottom: var(--space-layout);
 }
 
 .nav__link {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--fg-color);
-    padding-bottom: 0.25rem;
-    border-bottom: 0.125rem solid var(--fg-scnd-color);
-    transition: all 0.2s ease, color 0.2s ease;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg-color);
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: all 0.2s ease, color 0.2s ease;
 }
 
 .nav__link--active {
-    border-bottom: 0.125rem solid var(--accent-color);
+  border-bottom: 0.125rem solid var(--accent-color);
 }
 
 .nav__link:hover {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
 }
 
 /* =========================
    5. Header
 ========================= */
 .header {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1.875rem; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
 }
 
 .header__wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .header__title {
-    margin: 0;
-    color: var(--accent-color);
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    font-size: clamp(3rem, 13.5vw, 5.5rem); 
-    white-space: nowrap;
+  margin: 0;
+  color: var(--accent-color);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 13.5vw, 5.5rem);
+  white-space: nowrap;
 }
 
 .header__subtitle {
-    margin: 0 auto;
-    color: var(--accent-color);
-    font-weight: 900;
-    line-height: 1.3;
-    max-width: 26rem;
-    font-size: clamp(1.375rem, 5vw, 2rem); 
+  margin: 0 auto;
+  color: var(--accent-color);
+  font-weight: 900;
+  line-height: 1.3;
+  max-width: 26rem;
+  font-size: clamp(1.375rem, 5vw, 2rem);
 }
 
 .header__address {
-    font-style: normal;
-    font-size: 0.875rem;
-    color: var(--fg-color);
-    opacity: 0.8;
+  font-style: normal;
+  font-size: 0.875rem;
+  color: var(--fg-color);
+  opacity: 0.8;
 }
 
 /* =========================
    6. Divider
 ========================= */
 .divider {
-    border: none;
-    height: 2px;
-    background-color: var(--fg-scnd-color);
-    width: 100%;
-    max-width: 18rem;
-    margin: var(--space-layout) auto; 
+  border: none;
+  height: 2px;
+  background-color: var(--fg-scnd-color);
+  width: 100%;
+  max-width: 18rem;
+  margin: var(--space-layout) auto;
 }
 
 /* =========================
    7. Main content (About)
 ========================= */
 .about {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-layout); 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout);
 }
 
 .about__paragraph {
-    margin: 0;
-    font-size: 1rem;
-    opacity: 0.9;
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .manifesto {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .manifesto__paragraph {
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 400;
-    opacity: 0.9;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 /* =========================
    8. Skills
 ========================= */
 .skills {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-layout); 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout);
 }
 
 .skills__title {
-    margin: 0;
-    text-align: center;
-    color: var(--accent-color);
-    font-size: clamp(1.25rem, 5vw, 1.75rem); 
-    font-weight: 800;
+  margin: 0;
+  text-align: center;
+  color: var(--accent-color);
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-weight: 800;
 }
 
 .skill {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .skill__title {
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 800;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 800;
 }
 
 .skill__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .skill__item {
-    font-size: 1rem;
-    line-height: var(--line-base-height);
+  font-size: 1rem;
+  line-height: var(--line-base-height);
 }
 
 .skill__name {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 .skill__desc {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    opacity: 0.8;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  opacity: 0.8;
 }
 
 /* =========================
    9. CTA (Mobile First)
 ========================= */
 .cta {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: var(--space-layout); 
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-layout);
+  text-align: center;
 }
 
 .cta__link {
-    font-weight: 800;
-    font-size: 1.125rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 0.125rem solid var(--fg-scnd-color);
-    transition: border-color 0.2s ease, color 0.2s ease;
+  font-weight: 800;
+  font-size: 1.125rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .cta__link:hover {
-    border-bottom-color: var(--accent-color);
-    color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 /* =========================
    10. Footer
 ========================= */
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem; 
-    margin-top: var(--space-layout-double);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: var(--space-layout-double);
 }
 
 .footer__links {
-    display: flex;
-    gap: var(--space-layout); 
+  display: flex;
+  gap: var(--space-layout);
 }
 
 .footer__link {
-    font-weight: 700;
-    font-size: 1rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 0.125rem solid var(--fg-scnd-color);
-    transition: border-color 0.2s ease, color 0.2s ease;
+  font-weight: 700;
+  font-size: 1rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .footer__link:hover {
-    border-bottom-color: var(--accent-color);
-    color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .footer__copyrights {
-    font-size: 0.875rem;
-    font-weight: 700;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
 /* =========================
    11. Filters (Projekty)
 ========================= */
 .filters {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem; 
-    margin-bottom: var(--space-layout);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: var(--space-layout);
 }
 
 .filters__label {
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 400;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .filters__group {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(0.75rem, 3vw, 1.5rem);
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+  width: 100%;
 }
 
 .filters__btn {
-    background-color: transparent;
-    border: 0.125rem solid var(--fg-color);
-    color: var(--fg-color);
-    font-family: var(--font-mono); 
-    font-size: clamp(0.875rem, 2.5vw, 1rem); 
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  background-color: transparent;
+  border: 0.125rem solid var(--fg-color);
+  color: var(--fg-color);
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .filters__btn--active,
 .filters__btn:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 /* =========================
    12. Projects List
 ========================= */
 .projects {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-layout); 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout);
 }
 
 .project {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .project__header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .project__title {
-    margin: 0;
-    width: fit-content;
+  margin: 0;
+  width: fit-content;
 }
 
 .project__link {
-    color: var(--fg-color);
-    font-weight: 800;
-    font-size: clamp(1.375rem, 4vw, 1.75rem); 
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem; 
-    padding-bottom: 0.25rem;
-    border-bottom: 0.125rem solid var(--fg-scnd-color);
-    transition: all  0.2s ease;
+  color: var(--fg-color);
+  font-weight: 800;
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: all 0.2s ease;
 }
 
 .project__link:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .project__link::after {
-    content: "↗"; 
-    font-family: var(--font-sans);
-    font-size: 1em; /* Przywracamy pełny rozmiar względem tekstu */
-    font-weight: 800; /* Zrównujemy "grubość" ze światłem nagłówka (było 400) */
-    margin-left: 0.15rem; /* Dajemy znakom trochę oddechu */
-    transition: transform 0.2s ease;
+  content: "↗";
+  font-family: var(--font-sans);
+  font-size: 1em;
+  font-weight: 800;
+  margin-left: 0.15rem;
+  transition: transform 0.2s ease;
 }
 
 .project__link:hover::after {
-    transform: translate(0.15rem, -0.15rem); 
+  transform: translate(0.15rem, -0.15rem);
 }
 
 .project__tech-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    row-gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 0.5rem;
 }
 
 .project__tech-item {
-    font-family: var(--font-mono);
-    font-size: 1rem; 
-    display: flex;
-    align-items: center;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .project__tech-item:not(:last-child)::after {
-    content: "■";
-    font-size: 0.4rem;
-    color: var(--fg-scnd-color);
-    margin: 0 0.75rem;
+  content: "■";
+  font-size: 0.4rem;
+  color: var(--fg-scnd-color);
+  margin: 0 0.75rem;
 }
 
 .project__content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .project__detail {
-    margin: 0;
-    font-size: clamp(0.9375rem, 2vw, 1rem); 
-    line-height: var(--line-base-height);
+  margin: 0;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  line-height: var(--line-base-height);
 }
 
 .project__label {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 /* =========================
    13. Desktop Enhancements
 ========================= */
 @media (min-width: 48rem) {
-    .container {
-        max-width: 48rem; 
-        padding: calc(var(--space-layout) * 1.5) 1.5rem; 
-    }
+  .container {
+    max-width: 48rem;
+    padding: calc(var(--space-layout) * 1.5) 1.5rem;
+  }
 
-    .manifesto__paragraph {
-        font-size: 1.25rem;
-    }
+  .manifesto__paragraph {
+    font-size: 1.25rem;
+  }
 
-    .cta {
-        flex-direction: row;
-        justify-content: center;
-        gap: var(--space-layout);
-    }
+  .cta {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-layout);
+  }
 
-    .footer {
-        flex-direction: row;
-        justify-content: center;
-        gap: var(--space-layout-double);
-    }
+  .footer {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-layout-double);
+  }
 
-    .footer__links {
-        gap: var(--space-layout);
-    }
+  .footer__links {
+    gap: var(--space-layout);
+  }
 
-    /* Modyfikacje dla strony Projekty */
-    .filters {
-        flex-direction: row; 
-        justify-content: flex-start;
-        align-items: center;
-        gap: 2rem;
-    }
+  /* Modyfikacje dla strony Projekty */
+  .filters {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+  }
 
-    .filters__label {
-        margin-bottom: 0;
-    }
+  .filters__label {
+    margin-bottom: 0;
+  }
 
-    .filters__group {
-        justify-content: flex-start; 
-    }
+  .filters__group {
+    justify-content: flex-start;
+  }
+}
+
+/* =========================
+   14. Contact (Mobile First)
+========================= */
+
+/*
+  Główny kontener sekcji kontakt.
+  flex-direction: column + gap zamiast marginesów —
+  spójne z resztą projektu (about, skills itd.).
+*/
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 6vw, var(--space-layout));
+}
+
+/*
+  Adres e-mail jako wyróżniony link.
+  Celowo bold + wyśrodkowany + subtelny border-bottom
+  wzorem .cta__link — spójny język wizualny.
+  font-size z clamp: na mobile mniejszy, na desktop większy.
+*/
+.contact__email {
+  display: block;
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  color: var(--fg-color);
+  padding-bottom: 0.25rem;
+  width: fit-content;
+  margin: 0 auto;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact__email:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+/* =========================
+   15. Form (Mobile First)
+========================= */
+
+/*
+  Formularz jako flex column — każda .form__group
+  to osobny pionowy blok label + control.
+  gap zamiast margin na grupach: łatwiej zmienić
+  rytm z jednego miejsca.
+*/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/*
+  Label mały, lekko stonowany — hierarchy wizualna:
+  label podrzędny, input dominuje.
+*/
+.form__label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--fg-color);
+  opacity: 0.8;
+}
+
+/*
+  Wspólna baza dla input i textarea.
+  - appearance: none resetuje style przeglądarki (Safari)
+  - border oparty na --fg-scnd-color (subtelny, jak divider)
+  - background: transparent — blend z tłem strony
+  - font-family: inherit — bez fall-backu na serif w Safari
+  - transition na border-color dla płynnego focus
+*/
+.form__control {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
+  color: var(--fg-color);
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  border-radius: 0;            /* flat — spójne z resztą UI (brak border-radius wszędzie) */
+  line-height: var(--line-base-height);
+  transition: border-color 0.2s ease;
+}
+
+/*
+  focus bez :focus-visible — formularz zawsze
+  powinien dawać wyraźny feedback, niezależnie od metody wejścia.
+  Nadpisujemy globalny :focus-visible — tutaj chcemy
+  border zamiast outline, żeby nie nakładać dwóch efektów.
+*/
+.form__control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/*
+  Modifier dla textarea:
+  - min-height z clamp: 180px mobile → 220px desktop
+  - resize: vertical — użytkownik może powiększyć
+    w pionie, ale nie deformować layout poziomego
+*/
+.form__control--textarea {
+  min-height: clamp(11.25rem, 30vw, 13.75rem);
+  resize: vertical;
+}
+
+/*
+  Kontener przycisku — justify flex-end przesuwa
+  przycisk do prawej (jak na screenshocie).
+  Bez tego musiałbyś robić margin-left: auto na samym buttonie.
+*/
+.form__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*
+  Przycisk wzorowany na .filters__btn:
+  transparent bg, border, kolor fg — ghost button.
+  Celowo font-sans (nie mono) — to CTA, nie kod.
+  cursor: pointer — zawsze na interaktywnych elementach.
+*/
+.form__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  color: var(--fg-color);
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.form__btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.form__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
