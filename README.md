@@ -51,7 +51,7 @@ No build step required — this is a fully static site.
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/konradjam/<repo-name>.git
-   cd <repo-name>```
+   cd <repo-name>
 
 2. **Run locally:**
     - Open `index.html` directly in your browser, or
