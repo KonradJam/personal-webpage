@@ -321,10 +321,16 @@ a {
   transition: all 0.2s ease;
 }
 
-.filters__btn--active,
-.filters__btn:hover {
+.filters__btn--active {
   color: var(--accent-color);
   border-color: var(--accent-color);
+}
+
+@media (hover: hover) {
+  .filters__btn:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
 }
 
 /* =========================
