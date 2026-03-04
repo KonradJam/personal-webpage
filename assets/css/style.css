@@ -572,3 +572,38 @@ a {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* =========================
+   16. Success Message  
+========================= */
+.success-send {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 1.5rem);
+}
+.success-send__title {
+  margin: 0;
+  color: var(--accent-color);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  font-weight: 800;
+}
+
+.success-send__paragraph {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.success-send__link {
+  font-weight: 800;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid var(--fg-scnd-color);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.success-send__link:hover {
+  border-bottom-color: var(--accent-color);
+  color: var(--accent-color);
+}
