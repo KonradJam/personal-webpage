@@ -41,7 +41,38 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Project Title", name: "title", widget: "string"}
-      - {label: "Categories (space separated)", name: "categories", widget: "string"}
-      - {label: "Short Description (Lead)", name: "description", widget: "text"}
-      - {label: "Main Content", name: "body", widget: "markdown"}
+      - label: "Project Title"
+        name: "title"
+        widget: "string"
+
+      - label: "External URL"
+        name: "project_url"
+        widget: "string"
+        hint: "Remember to include https://"
+
+      - label: "Filter Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options: ["ai", "automatisation", "dtp", "graphic", "web", "iot"]
+        hint: "Select one or more categories for the filtering system"
+
+      - label: "Technologies Used"
+        name: "technologies"
+        widget: "list"
+        summary: '{{fields.tech_name}}'
+        field: {label: "Technology Name", name: "tech_name", widget: "string"}
+        hint: "Add technologies one by one (e.g., n8n, API, HTML)"
+
+      - label: "Problem Description"
+        name: "problem"
+        widget: "text"
+        
+      - label: "Solution"
+        name: "solution"
+        widget: "text"
+
+      - label: "Impact / Result"
+        name: "impact"
+        widget: "text"
+
