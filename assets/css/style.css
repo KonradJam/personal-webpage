@@ -319,6 +319,7 @@ a {
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .filters__btn--active {
