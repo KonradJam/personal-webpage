@@ -1,8 +1,4 @@
-window.addEventListener('touchstart', function() {
-  document.body.classList.add('is-touch-device');
-}, { once: true });
-
-document.addEventListener("projectsLoaded", e) => {
+document.addEventListener("projectsLoaded", (e) => {
   const filterButtons = document.querySelectorAll(".filters__btn");
   const projects = document.querySelectorAll(".project");
 

@@ -326,7 +326,8 @@ a {
   border-color: var(--accent-color);
 }
 
-body:not(.is-touch-device) .filters__btn:hover {
+@media (hover: hover) {
+.filters__btn:hover {
     color: var(--accent-color);
     border-color: var(--accent-color);
   }
