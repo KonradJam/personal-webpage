@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("projectsLoaded", () => {
   const filterButtons = document.querySelectorAll(".filters__btn");
-  const projects     = document.querySelectorAll(".project");
+  const projects = document.querySelectorAll(".project");
 
   const activeFilters = new Set();
 
   filterButtons.forEach(button => {
     button.addEventListener("click", () => {
-      const filterValues = button.getAttribute("data-filter").trim().split(/\s+/);
+      const filterAttr = button.getAttribute("data-filter") || "";
+      const filterValues = filterAttr.trim().split(/\s+/);
 
       const isActive = button.classList.toggle("filters__btn--active");
       button.setAttribute("aria-pressed", isActive.toString());
 
       filterValues.forEach(value => {
+        if (!value) return; 
         if (isActive) {
           activeFilters.add(value);
         } else {
@@ -30,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     projects.forEach(project => {
-      const categoriesAttr = project.getAttribute("data-categories");
-      if (!categoriesAttr) return;
-
+      const categoriesAttr = project.getAttribute("data-categories") || "";
       const projectCategories = categoriesAttr.trim().split(/\s+/);
 
       const isVisible = [...activeFilters].some(activeFilter =>
