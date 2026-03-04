@@ -1,4 +1,4 @@
-document.addEventListener("projectsLoaded", (e) => {
+document.addEventListener("projectsLoaded", () => {
   const filterButtons = document.querySelectorAll(".filters__btn");
   const projects = document.querySelectorAll(".project");
 
@@ -23,9 +23,9 @@ document.addEventListener("projectsLoaded", (e) => {
 
       filterProjects();
 
-    if (e.detail > 0) {
+    setTimeout(() => {
         button.blur();
-    }
+      }, 50);
     });
   });
 
