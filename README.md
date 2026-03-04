@@ -12,7 +12,8 @@ A minimalist personal portfolio website that bridges my **DTP / prepress roots**
 **What you'll find here:**
 - A clean, mobile-first presentation of my skills and background
 - A filterable project showcase built in vanilla JavaScript
-- A contact form and spam-resistant email rendering
+- A contact form powered by Netlify Forms with email delivery via Zoho Mail
+- Content management via Decap CMS (Git-based, no database required)
 - Fully automated CI/CD deployment via GitHub + Netlify
 
 ---
@@ -36,10 +37,26 @@ Key design decisions:
 /
 ├── index.html # About / home page
 ├── projects.html # Selected work + filtering UI
-├── contact.html # Contact page with spam-resistant email
-├── style.css # Design tokens, global styles, components
-├── filter.js # Multi-select project filtering logic
-└── script.js # Client-side email rendering
+├── contact.html # Contact page with Netlify Forms integration
+├── success.html # Post-submission redirect page
+├── _redirects.txt # Netlify redirect rules
+├── README.md
+│
+├── admin/
+│ ├── index.html # Decap CMS entry point
+│ └── config.yml # CMS collections & backend config
+│
+├── assets/
+│ ├── css/
+│ │ └── style.css # Design tokens, global styles, components
+│ ├── images/
+│ └── js/
+│ ├── filter.js # Multi-select project filtering logic
+│ ├── load-projects.js # Dynamic project loading from Markdown
+│ └── script.js # Client-side email rendering
+│
+└── content/
+└── projects/ # Markdown files managed via Decap CMS
 ```
 
 ---
@@ -57,18 +74,45 @@ No build step required — this is a fully static site.
     - Open `index.html` directly in your browser, or
     - Use a local dev server for best results (e.g. VS Code Live Server extension)
 
-| Layer      | Technology                                      |
-| ---------- | ----------------------------------------------- |
-| Markup     | HTML5 (semantic, accessible)                    |
-| Styling    | CSS3 — custom properties, Flexbox, mobile-first |
-| Scripting  | Vanilla JavaScript — no frameworks              |
-| Deployment | GitHub + Netlify (continuous deployment)        |
+| Layer      | Technology                                                      |
+| ---------- | --------------------------------------------------------------- |
+| Markup     | HTML5 (semantic, accessible)                                    |
+| Styling    | CSS3 — custom properties, Flexbox, mobile-first                 |
+| Scripting  | Vanilla JavaScript — no frameworks                              |
+| CMS        | Decap CMS — Git-based, accessed via Netlify Identity Bridge     |
+| Forms      | Netlify Forms — submissions forwarded to Zoho Mail              |
+| Deployment | GitHub + Netlify (continuous deployment)                        |
 
 ---
 
 ## 🌐 Deployment
 
-Source code is hosted on GitHub and connected to Netlify for automated CI/CD. Every commit pushed to the main branch automatically triggers a new build and deploys to the live domain — no manual FTP transfers, no downtime.
+Source code is hosted on GitHub and connected to Netlify for automated CI/CD.
+Every commit pushed to the `main` branch automatically triggers a new build
+and deploys to the live domain — no manual FTP transfers, no downtime.
+
+### CMS — Decap CMS with Netlify Identity Bridge
+
+Content is managed via **Decap CMS** (formerly Netlify CMS), a Git-based
+headless CMS that requires no external database. Authentication is handled
+by **Netlify Identity** using the **Git Gateway Bridge**, which means:
+
+- Editors log in through Netlify Identity (email + password or OAuth)
+- Decap CMS commits changes directly to the GitHub repository via Git Gateway
+- Every save triggers an automatic Netlify rebuild — the live site stays in sync
+
+### Forms — Netlify Forms + Zoho Mail
+
+The contact form on `contact.html` is processed by **Netlify Forms**
+(detected automatically at build time via the `data-netlify="true"` attribute).
+Submissions are forwarded to **Zoho Mail** using Netlify's outgoing email
+notification webhook, so no third-party form service is required.
+
+Form flow:
+1. Visitor submits the contact form
+2. Netlify captures and stores the submission
+3. A notification email is forwarded to the configured Zoho Mail address
+4. Visitor is redirected to a custom thank-you page
 
 Live site: [konradjam.com](https://konradjam.com)
 
