@@ -65,10 +65,16 @@ a {
    4. Nav
 ========================= */
 .nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   justify-content: center;
   gap: clamp(3rem, 15vw, 4rem);
   margin-bottom: var(--space-layout);
+  background-color: var(--bg-color);
+  padding: 1rem 0;
 }
 
 .nav__link {
@@ -299,6 +305,7 @@ a {
   margin: 0;
   font-size: 1.125rem;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .filters__group {
@@ -327,7 +334,7 @@ a {
 }
 
 @media (hover: hover) {
-.filters__btn:hover {
+  .filters__btn:hover {
     color: var(--accent-color);
     border-color: var(--accent-color);
   }
@@ -588,6 +595,7 @@ a {
   align-items: center;
   gap: clamp(1rem, 4vw, 1.5rem);
 }
+
 .success-send__title {
   margin: 0;
   color: var(--accent-color);
@@ -618,13 +626,16 @@ a {
    17. Language Switcher
 ========================= */
 .lang-switcher {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--fg-color);
+  z-index: 100;
 }
 
 .lang-switcher__link {
