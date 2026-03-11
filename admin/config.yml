@@ -73,7 +73,7 @@ collections:
         summary: '{{fields.tech_name}}'
         field: {label: "Technology Name", name: "tech_name", widget: "string"}
         hint: "Add technologies one by one (e.g., n8n, API, HTML)"
-        i18n: duplicate
+        i18n: true
 
       - label: "Problem Description"
         name: "problem"
