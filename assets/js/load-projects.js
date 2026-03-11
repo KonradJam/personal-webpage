@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const githubUser = "konradjam";
     const githubRepo = "personal-webpage";
-    const branchName = "main"; 
+    const branchName = "feature/i18n-en"; 
     
     const isEn = window.location.pathname.includes('/en/');
     const projectFolder = isEn ? 'content/projects/en' : 'content/projects/pl';
