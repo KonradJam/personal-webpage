@@ -5,8 +5,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const githubUser = "konradjam";
     const githubRepo = "personal-webpage";
     const branchName = "main"; 
+    
+    const isEn = window.location.pathname.includes('/en/');
+    const projectFolder = isEn ? 'content/projects/en' : 'content/projects/pl';
 
-    const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/content/projects?ref=${branchName}`;
+    const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${projectFolder}?ref=${branchName}`;
 
     try {
         const response = await fetch(apiUrl);
@@ -47,13 +50,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </header>
                 <div class="project__content">
                     <p class="project__detail">
-                        <strong class="project__label">Problem:</strong> ${project.problem || ''}
+                        <strong class="project__label">${isEn ? 'Problem:' : 'Problem:'}</strong> ${project.problem || ''}
                     </p>
                     <p class="project__detail">
-                        <strong class="project__label">Rozwiązanie:</strong> ${project.solution || ''}
+                        <strong class="project__label">${isEn ? 'Solution:' : 'Rozwiązanie:'}</strong> ${project.solution || ''}
                     </p>
                     <p class="project__detail">
-                        <strong class="project__label">Wpływ:</strong> ${project.impact || ''}
+                        <strong class="project__label">${isEn ? 'Impact:' : 'Wpływ:'}</strong> ${project.impact || ''}
                     </p>
                 </div>
             `;
