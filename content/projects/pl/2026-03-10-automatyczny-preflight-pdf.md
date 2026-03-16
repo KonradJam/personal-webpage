@@ -4,6 +4,9 @@ project_url: https://github.com/KonradJam/DTP-Print-Production-Solutions/tree/ma
 categories:
   - automatisation
   - dtp
+technologies:
+  - ExtendScript
+  - Adobe Acrobat Droplets
 problem: Klient przysyła kilkadziesiąt plików PDF naraz, każdy wymaga ręcznego
   sprawdzenia przed drukiem.
 solution: Skrypt PowerShell monitoruje folder i automatycznie uruchamia
