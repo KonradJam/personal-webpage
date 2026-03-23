@@ -9,12 +9,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const isEn = window.location.pathname.includes('/en/');
     const projectFolder = isEn ? 'content/projects/en' : 'content/projects/pl';
 
+    const loadingText = document.createElement("div");
+    loadingText.className = "projects__loading";
+    loadingText.textContent = isEn ? "Loading..." : "Wczytuję...";
+    projectsContainer.appendChild(loadingText);
+
     const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${projectFolder}?ref=${branchName}`;
 
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error("API request failed.");
         const filesList = await response.json();
+
+        loadingText.remove();
 
         const markdownFiles = filesList.filter(file => file.name.endsWith('.md'));
 
@@ -67,6 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.dispatchEvent(new Event("projectsLoaded"));
 
     } catch (error) {
+        if (loadingText.parentNode) loadingText.remove();
         console.error(error);
     }
 });

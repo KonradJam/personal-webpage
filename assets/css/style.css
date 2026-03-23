@@ -349,6 +349,25 @@ a {
   gap: var(--space-layout);
 }
 
+.projects__loading {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  text-align: center;
+  color: var(--fg-color);
+  opacity: 0.3;
+  padding: 2rem 0;
+  animation: pulse-loading 2s infinite ease-in-out;
+}
+
+@keyframes pulse-loading {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .project {
   display: flex;
   flex-direction: column;
