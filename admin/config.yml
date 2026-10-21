@@ -29,7 +29,7 @@ auth:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in Decap CMS (optional)
-site_url: https://famous-meerkat-e50669.netlify.app
+site_url: https://konradjam.com
 
 media_folder: "assets/images" # Where the uploaded files will be saved in the repo
 public_folder: "/assets/images" # The path used in the generated content
