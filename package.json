@@ -1,0 +1,11 @@
+{
+  "name": "konradjam-static-projects",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-projects.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
