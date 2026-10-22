@@ -1,156 +1,206 @@
-# Personal Portfolio Website 🖨️✨
+# Personal Portfolio Website
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Platform](https://img.shields.io/badge/platform-Web-lightgrey)
-![Languages](https://img.shields.io/badge/languages-HTML%20%7C%20CSS%20%7C%20JS-blue)
-![Deployment](https://img.shields.io/badge/deployment-Netlify-00C7B7)
+A bilingual, typography-focused personal portfolio that combines DTP and prepress experience with front-end development, AI, and workflow automation.
+
+**Live website:** [konradjam.com](https://konradjam.com)  
+**Languages:** Polish and English
 
 ## Overview
 
-A minimalist personal portfolio website that bridges my **DTP / prepress roots** with modern front-end execution. The design deliberately references classic newspaper layouts — strong typographic hierarchy, generous whitespace, and an electric blue accent — reinterpreted through a contemporary, web-native lens.
+This website is built with semantic HTML, CSS, and vanilla JavaScript. Its visual style draws from editorial and print design: clear typographic hierarchy, generous whitespace, minimal decoration, and an electric-blue accent.
 
-**What you'll find here:**
-- A clean, mobile-first presentation of my skills and background
-- A filterable project showcase built in vanilla JavaScript
-- A contact form powered by Netlify Forms with email delivery via Zoho Mail
-- Content management via Decap CMS (Git-based, no database required)
-- Fully automated CI/CD deployment via GitHub + Netlify
+Project content is managed through Decap CMS and stored as Markdown files in GitHub. During deployment, a small Node.js build script converts the project metadata into static HTML. Visitors and search engines receive the project titles and descriptions directly in the page source; JavaScript is used for interactive filtering rather than content retrieval.
 
----
+## Features
 
-## 🎨 Design Philosophy
+- **Bilingual pages:** Polish and English versions of the portfolio.
+- **Build-time project generation:** Project cards are generated from Markdown/YAML data before deployment.
+- **Interactive filtering:** Four multi-select filters — AI, Automation, DTP / Graphics, and Web / IoT — implemented in vanilla JavaScript.
+- **Git-based content management:** Decap CMS with DecapBridge PKCE authentication; no content database required.
+- **Automated deployment:** GitHub commits to `main` trigger Netlify builds and publication.
+- **Contact form:** Netlify Forms handles submissions, with email notifications configured through Netlify.
+- **SEO-friendly output:** Project content is included in the generated HTML, with language-specific canonical URLs and `hreflang` links.
+- **Responsive layout:** A minimal, typography-first interface without a front-end framework.
 
-This project is **typographic-first**. Every visual decision traces back to years of print production discipline: clarity, hierarchy, and precision.
+## Technology Stack
 
-Key design decisions:
+| Area | Technology |
+| --- | --- |
+| Markup | HTML5 |
+| Styling | CSS3 |
+| Browser interactions | Vanilla JavaScript |
+| Build tooling | Node.js (ES modules) |
+| Content parsing | `js-yaml` |
+| CMS | Decap CMS + DecapBridge (PKCE) |
+| Content storage | Markdown files in GitHub |
+| Hosting and CI/CD | Netlify connected to GitHub |
+| Contact handling | Netlify Forms |
 
-- **Newspaper-inspired headlines** — Classic papers used large red/blue titles as dominant anchors. I chose blue, pushed to **electric blue**, to make the reference feel modern rather than nostalgic.
-- **Jan Tschichold's "The New Typography"** — Clean sans-serif typefaces, no unnecessary decoration, and a strong vertical rhythm built on generous whitespace.
-- **Minimal ornament** — The few horizontal rules (`<hr>`) are a deliberate, subtle break from the strict Tschichold rule, retained for editorial rhythm.
-- **Traditional link emphasis** — Links are underlined: a familiar, print-adjacent visual cue that doesn't rely on color alone.
-- **Ghost buttons** — Border-only, no fill. An intentional nod to the utilitarian language of wireframes and print dummies.
+## How It Works
 
----
-
-## 📂 Project Structure
+```text
+Decap CMS / DecapBridge
+          |
+          v
+GitHub repository (Markdown content)
+          |
+          v
+Netlify build: npm run build
+          |
+          v
+Node.js generator (scripts/build-projects.mjs)
+          |
+          v
+Static website in dist/
+          |
+          v
+Netlify deployment -> konradjam.com
 ```
-/
-├── index.html # About / home page
-├── projects.html # Selected work + filtering UI
-├── contact.html # Contact page with Netlify Forms integration
-├── success.html # Post-submission redirect page
-├── _redirects.txt # Netlify redirect rules
-├── README.md
-│
+
+The project generator:
+
+1. Copies the existing static website into `dist/`.
+2. Reads Markdown files from `content/projects/pl/` and `content/projects/en/`.
+3. Parses YAML front matter with `js-yaml`.
+4. Inserts project cards into `projects.html` and `en/projects.html`.
+5. Preserves the CSS classes and category attributes used by the browser-side filters.
+6. Sets canonical URLs and Polish/English alternate-language links for the project pages.
+7. Produces deployable HTML that does **not** need GitHub API requests to display projects.
+
+**Important:** The project lists in the source HTML files are intentionally empty. The generated versions in `dist/` contain the actual project content. Do not edit files inside `dist/` manually: that directory is recreated on each build and excluded from Git.
+
+## Repository Structure
+
+```text
+personal-webpage/
 ├── admin/
-│ ├── index.html # Decap CMS entry point
-│ └── config.yml # CMS collections & backend config
-│
+│   ├── index.html            # Decap CMS interface
+│   └── config.yml            # CMS, DecapBridge and content schema
 ├── assets/
-│ ├── css/
-│ │ └── style.css # Design tokens, global styles, components
-│ ├── images/
-│ └── js/
-│ ├── filter.js # Multi-select project filtering logic
-│ ├── load-projects.js # Dynamic project loading from Markdown
-│ └── script.js # Client-side email rendering
-│
-└── content/
-└── projects/ # Markdown files managed via Decap CMS
+│   ├── css/                  # Website styles
+│   ├── images/               # Website and CMS-uploaded images
+│   └── js/
+│       ├── filter.js         # Interactive category filtering
+│       └── script.js         # Other browser-side behaviour
+├── content/
+│   └── projects/
+│       ├── pl/               # Polish project Markdown files
+│       └── en/               # English project Markdown files
+├── en/                       # English pages
+├── scripts/
+│   └── build-projects.mjs    # Static project-page generator
+├── index.html                # Polish home page
+├── projects.html             # Polish projects template
+├── contact.html              # Polish contact page
+├── success.html              # Contact form confirmation
+├── netlify.toml              # Netlify build settings
+├── package.json              # npm build command and dependency
+├── package-lock.json         # Dependency lockfile
+└── README.md
 ```
 
----
+This tree highlights the files relevant to the current build; it is not a complete inventory of every repository file.
 
-## 🚀 Getting Started
+## Local Development
 
-No build step required — this is a fully static site.
+### Requirements
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/konradjam/<repo-name>.git
-   cd <repo-name>
+- Node.js 22 (recommended; used in the Netlify build)
+- npm
+- Git
 
-2. **Run locally:**
-    - Open `index.html` directly in your browser, or
-    - Use a local dev server for best results (e.g. VS Code Live Server extension)
+### Setup
 
-| Layer      | Technology                                                      |
-| ---------- | --------------------------------------------------------------- |
-| Markup     | HTML5 (semantic, accessible)                                    |
-| Styling    | CSS3 — custom properties, Flexbox, mobile-first                 |
-| Scripting  | Vanilla JavaScript — no frameworks                              |
-| CMS        | Decap CMS — Git-based, accessed via Netlify Identity Bridge     |
-| Forms      | Netlify Forms — submissions forwarded to Zoho Mail              |
-| Deployment | GitHub + Netlify (continuous deployment)                        |
+Clone the repository:
 
----
+```bash
+git clone https://github.com/konradjam/personal-webpage.git
+cd personal-webpage
+```
 
-## 🌐 Deployment
+Install dependencies and generate the site:
 
-Source code is hosted on GitHub and connected to Netlify for automated CI/CD.
-Every commit pushed to the `main` branch automatically triggers a new build
-and deploys to the live domain — no manual FTP transfers, no downtime.
+```bash
+npm ci
+npm run build
+```
 
-### CMS — Decap CMS with Netlify Identity Bridge
+The generated website is located in `dist/`.
 
-Content is managed via **Decap CMS** (formerly Netlify CMS), a Git-based
-headless CMS that requires no external database. Authentication is handled
-by **Netlify Identity** using the **Git Gateway Bridge**, which means:
+Preview it using a local HTTP server, for example:
 
-- Editors log in through Netlify Identity (email + password or OAuth)
-- Decap CMS commits changes directly to the GitHub repository via Git Gateway
-- Every save triggers an automatic Netlify rebuild — the live site stays in sync
+```bash
+npx serve dist
+```
 
-### Forms — Netlify Forms + Zoho Mail
+Open the local URL displayed in the terminal. Use the generated pages to test the actual deployed structure, including `/projects.html` and `/en/projects.html`.
 
-The contact form on `contact.html` is processed by **Netlify Forms**
-(detected automatically at build time via the `data-netlify="true"` attribute).
-Submissions are forwarded to **Zoho Mail** using Netlify's outgoing email
-notification webhook, so no third-party form service is required.
+A local preview does not reproduce Netlify's hosted form submission service or the DecapBridge authentication environment.
 
-Form flow:
-1. Visitor submits the contact form
-2. Netlify captures and stores the submission
-3. A notification email is forwarded to the configured Zoho Mail address
-4. Visitor is redirected to a custom thank-you page
+## Managing Projects
 
-Live site: [konradjam.com](https://konradjam.com)
+The CMS is available at [konradjam.com/admin/](https://konradjam.com/admin/). Authorized editors sign in through **DecapBridge**, which uses PKCE authentication and the Git-based CMS backend configured in `admin/config.yml`.
 
----
+Each project has localized Markdown content with YAML front matter. Supported fields include:
 
-## 👨‍💻 About the Author
+- `title` — project title
+- `project_url` — external project link
+- `categories` — filter categories
+- `technologies` — technology labels
+- `problem`, `solution`, `impact` — project description sections
 
-I'm a Graphic Designer and DTP Operator with 15+ years of hands-on experience in the printing industry. My work sits at the intersection of print production precision and modern automation — building tools that eliminate repetitive tasks so people can focus on creative work.
+Category values defined by the CMS are `ai`, `automatisation`, `dtp`, `graphic`, `web`, and `iot`. Four filter buttons group these values in the UI. Multiple active buttons use **OR** matching: a project is shown if it matches at least one active category.
 
-**My expertise:**
-- Desktop Publishing & prepress workflows
-- Print production optimization and quality control
-- Automation with Python, JavaScript, and Adobe ExtendScript
-- Frontend development and IoT experiments
+After a published content change is committed to `main`, Netlify starts a new build and generates updated HTML. No manual editing of the project pages is needed. Updates become visible after deployment finishes; search engines may refresh their indexes later.
 
-> *"Routine belongs to algorithms. Keep what matters for yourself."*
+## Deployment
 
-**Connect with me:**
+The production site is hosted on **Netlify** and built from the `main` branch of this GitHub repository.
 
-- 💼 [LinkedIn](https://www.linkedin.com/in/konradjam) – Let's connect professionally
-- 🐙 [GitHub Issues](https://github.com/konradjam/personal-webpage/issues) – Report bugs or request features
+The `netlify.toml` configuration is:
 
----
+```toml
+[build]
+  command = "npm run build"
+  publish = "dist"
+```
 
-## 📄 License
+To deploy a change:
 
-This project is licensed under the MIT License.
+1. Make changes in a feature branch and test them locally.
+2. Open a pull request to `main`.
+3. Merge the pull request after verification.
+4. Netlify builds the site and publishes the contents of `dist/`.
 
-**You are free to:**
-- ✅ Use, modify, and distribute this code
-- ✅ Use it as a base for your own portfolio
+Build output and deployment status can be reviewed under **Netlify → Deploys → Deploy log**.
 
-**Just remember to:**
-- Keep the original license notice in the code
-- Credit the original author (appreciated but not required)
+## Search Engine Accessibility
 
-See the [LICENSE](LICENSE) file for full details.
+Project titles, descriptions, and links are generated directly into HTML at build time. The filtering controls remain interactive, but the project content does not depend on JavaScript execution or live GitHub API requests.
 
----
+The build also sets canonical addresses for:
 
-*Built with ❤️ for print, design, and the open web*
+- [Polish projects](https://konradjam.com/projects)
+- [English projects](https://konradjam.com/en/projects)
+
+and adds `hreflang` references between these two versions. Indexing status can be checked with Google Search Console; generating crawlable HTML improves accessibility but does not guarantee indexing.
+
+## Contact Form
+
+The contact page uses **Netlify Forms** to collect submissions. The form is processed by Netlify on the deployed website and redirects to a confirmation page. Email notifications, including delivery to a Zoho Mail inbox, are managed through Netlify's notification settings rather than application-side code.
+
+## Design Approach
+
+The visual language borrows from editorial layouts and print typography. It emphasizes readable hierarchy, whitespace, understated rules, visible links, and functional controls. The aim is a restrained portfolio where projects and their technical details remain the focus.
+
+## Author
+
+**Konrad Jam** — Graphic Designer and DTP Operator focused on print production, prepress workflows, automation, and practical software tools.
+
+- [Website](https://konradjam.com)
+- [LinkedIn](https://www.linkedin.com/in/konradjam)
+- [GitHub](https://github.com/KonradJam)
+
+## License
+
+This repository does not currently include a `LICENSE` file. No general reuse or redistribution license is granted by the README. For permission to reuse the source code or visual assets, please contact the author.
